@@ -7,7 +7,7 @@ import {
   saveProgress as dbSaveProgress,
   loadProgress as dbLoadProgress,
   resetProgress as dbResetProgress,
-} from "@/lib/db"
+} from "@/lib/db/queries"
 import type { TriviaGame, GameProgress } from "@/lib/types"
 
 export async function saveGame(game: TriviaGame) {

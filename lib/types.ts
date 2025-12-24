@@ -14,3 +14,7 @@ export interface TriviaGame {
 }
 
 export type GameMode = "editor" | "play"
+
+export type GameProgress = {
+  completedCells: string[]
+}
