@@ -251,8 +251,8 @@ export default function TriviaPage() {
   const currentPoints = selectedCell ? (selectedCell.row + 1) * 100 : 0
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className="h-screen bg-background p-2 md:p-4 flex flex-col">
+      <div className="w-full flex flex-col flex-1 gap-4 overflow-hidden">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold">{game.name}</h1>
@@ -303,14 +303,16 @@ export default function TriviaPage() {
           </div>
         )}
 
-        <TriviaGrid
-          rows={game.rows}
-          columns={game.columns}
-          categories={game.categories}
-          cells={game.cells}
-          mode={mode}
-          onCellClick={handleCellClick}
-        />
+        <div className="flex-1 min-h-0">
+          <TriviaGrid
+            rows={game.rows}
+            columns={game.columns}
+            categories={game.categories}
+            cells={game.cells}
+            mode={mode}
+            onCellClick={handleCellClick}
+          />
+        </div>
 
         <QuestionDialog
           open={dialogOpen}

@@ -77,7 +77,7 @@ export function QuestionDialog({ open, mode, cell, points, onClose, onSave, onMa
           </DialogHeader>
 
           <div className="space-y-4 py-4">
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="question">Question</Label>
               <Textarea
                 id="question"
@@ -88,7 +88,7 @@ export function QuestionDialog({ open, mode, cell, points, onClose, onSave, onMa
               />
             </div>
 
-            <div>
+            <div className="space-y-2">
               <Label htmlFor="answer">Answer</Label>
               <Textarea
                 id="answer"
@@ -113,32 +113,32 @@ export function QuestionDialog({ open, mode, cell, points, onClose, onSave, onMa
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[700px]">
+      <DialogContent className="sm:max-w-[90vw] md:max-w-[80vw] lg:max-w-[1000px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl">{points} Points</DialogTitle>
+          <DialogTitle className="text-4xl">{points} Points</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6 py-6">
+        <div className="space-y-8 py-8">
           <div>
-            <h3 className="text-lg font-semibold mb-3">Question:</h3>
-            <p className="text-xl leading-relaxed">{cell?.question || "No question set"}</p>
+            <h3 className="text-2xl font-semibold mb-4">Question:</h3>
+            <p className="text-3xl leading-relaxed">{cell?.question || "No question set"}</p>
           </div>
 
           {showAnswer && (
-            <div className="border-t pt-6">
-              <h3 className="text-lg font-semibold mb-3 text-primary">Answer:</h3>
-              <p className="text-xl leading-relaxed">{cell?.answer || "No answer set"}</p>
+            <div className="border-t pt-8">
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Answer:</h3>
+              <p className="text-3xl leading-relaxed">{cell?.answer || "No answer set"}</p>
             </div>
           )}
         </div>
 
         <DialogFooter className="flex gap-2">
           {!showAnswer ? (
-            <Button onClick={handleRevealAnswer} size="lg" className="w-full">
+            <Button onClick={handleRevealAnswer} size="lg" className="w-full text-xl py-6">
               Reveal Answer (Space)
             </Button>
           ) : (
-            <Button onClick={handleClose} variant="outline" size="lg" className="w-full bg-transparent">
+            <Button onClick={handleClose} variant="outline" size="lg" className="w-full bg-transparent text-xl py-6">
               Close
             </Button>
           )}
