@@ -123,16 +123,18 @@ export function QuestionDialog({ open, mode, cell, points, onClose, onSave, onMa
 
         <div className="flex-1 flex flex-col justify-center py-8 overflow-auto">
           <div className="text-center">
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-8 text-muted-foreground">Question:</h3>
-            <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight font-medium">{cell?.question || "No question set"}</p>
+            {showAnswer ? (
+              <>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-8 text-primary">Answer:</h3>
+                <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight font-medium">{cell?.answer || "No answer set"}</p>
+              </>
+            ) : (
+              <>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-8 text-muted-foreground">Question:</h3>
+                <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight font-medium">{cell?.question || "No question set"}</p>
+              </>
+            )}
           </div>
-
-          {showAnswer && (
-            <div className="border-t mt-16 pt-16 text-center">
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-8 text-primary">Answer:</h3>
-              <p className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight font-medium">{cell?.answer || "No answer set"}</p>
-            </div>
-          )}
         </div>
 
         <DialogFooter className="shrink-0 flex gap-2">
