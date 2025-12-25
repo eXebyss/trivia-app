@@ -10,7 +10,11 @@
       "Bash(pnpm db:push:*)",
       "Bash(npx dotenv:*)",
       "Bash(npx tsc:*)",
-      "Bash(pnpm install)"
+      "Bash(pnpm install)",
+      "WebSearch",
+      "WebFetch(domain:developer.samsung.com)",
+      "Bash(grep:*)",
+      "Bash(pnpm remove:*)"
     ]
   }
 }
