@@ -29,12 +29,12 @@ export function getAllGames(): TriviaGame[] {
   return stored ? JSON.parse(stored) : []
 }
 
-export function getGame(id: string): TriviaGame | null {
+export function getGame(id: number): TriviaGame | null {
   const games = getAllGames()
   return games.find((g) => g.id === id) || null
 }
 
-export function deleteGame(id: string): void {
+export function deleteGame(id: number): void {
   const games = getAllGames().filter((g) => g.id !== id)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(games))
 }
@@ -78,7 +78,7 @@ export function clearPlayProgress(): void {
 
 export function createDefaultGame(): TriviaGame {
   return {
-    id: Date.now().toString(),
+    id: Date.now(),
     name: "New Trivia Game",
     rows: 5,
     columns: 5,

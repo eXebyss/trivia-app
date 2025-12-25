@@ -11,6 +11,8 @@ export interface TriviaGame {
   columns: number
   categories: string[]
   cells: { [key: string]: TriviaCell }
+  createdAt?: string
+  updatedAt?: string
 }
 
 export type GameMode = "editor" | "play"
