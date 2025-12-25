@@ -13,7 +13,7 @@ interface QuestionDialogProps {
   cell: TriviaCell | null
   points: number
   onClose: () => void
-  onSave?: (question: string, answer: string) => void
+  onSave?: (question: string, answer: string) => void | Promise<void>
   onMarkPlayed?: () => void
 }
 
@@ -53,9 +53,9 @@ export function QuestionDialog({ open, mode, cell, points, onClose, onSave, onMa
     }
   }, [mode, open, showAnswer])
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (onSave) {
-      onSave(question, answer)
+      await onSave(question, answer)
     }
     onClose()
   }

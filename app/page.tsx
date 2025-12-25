@@ -133,7 +133,7 @@ export default function TriviaPage() {
 
   const getCellKey = (row: number, col: number) => `${row}-${col}`
 
-  const handleSaveCell = (question: string, answer: string) => {
+  const handleSaveCell = async (question: string, answer: string) => {
     if (game && selectedCell) {
       const cellKey = getCellKey(selectedCell.row, selectedCell.col)
       const newCells = {
@@ -144,7 +144,22 @@ export default function TriviaPage() {
           played: false,
         },
       }
-      setGame({ ...game, cells: newCells })
+      const updatedGame = { ...game, cells: newCells }
+      setGame(updatedGame)
+
+      // Save to database immediately
+      try {
+        const result = await saveGameAction(updatedGame)
+        if (!result.success) {
+          throw new Error(result.error)
+        }
+      } catch (error) {
+        toast({
+          title: "Error saving cell",
+          description: error instanceof Error ? error.message : "Failed to save cell to database.",
+          variant: "destructive",
+        })
+      }
     }
   }
 
